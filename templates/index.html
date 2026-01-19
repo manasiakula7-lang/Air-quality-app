@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Air Quality Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>🌍 AI Air Quality Index Calculator</h1>
+
+    <form method="POST">
+        <label>PM2.5 Concentration (µg/m³)</label>
+        <input type="number" step="0.1" name="pm25" required>
+
+        <button type="submit">Calculate AQI</button>
+    </form>
+
+    {% if result %}
+    <div class="result">
+        <h2>Results</h2>
+        <p><strong>PM2.5:</strong> {{ result.pm25 }}</p>
+        <p><strong>AQI:</strong> {{ result.aqi }}</p>
+        <p><strong>Category:</strong> {{ result.category }}</p>
+        <p><strong>Health Advice:</strong> {{ result.advice }}</p>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
